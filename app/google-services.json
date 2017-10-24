@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "272708718299",
+    "firebase_url": "https://letsgotogether-f31d2.firebaseio.com",
+    "project_id": "letsgotogether-f31d2",
+    "storage_bucket": "letsgotogether-f31d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272708718299:android:a485ab5c4bcc4f09",
+        "android_client_info": {
+          "package_name": "android.weildy.letsgotogether"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272708718299-6s983n2cbn8gthoil46i23m89abfjqm1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKEt1Fi8oZABlSJK5NzjdC_5Fg7qLGIG8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

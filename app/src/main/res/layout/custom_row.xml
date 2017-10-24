@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:background="@drawable/rounded_rectangle"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:padding="30dp"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/txt_title"
+        android:textColor="@color/material_green_700"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txt_no"
+        android:layout_below="@id/txt_title"
+        android:textColor="@color/material_green_700"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/txt_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="-"
+                android:textColor="@color/material_green_700"
+                android:textSize="40sp"
+                android:layout_width="wrap_content"
+                android:layout_margin="7dp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="0"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="7dp"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:text="+"
+                android:textSize="40sp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="7dp"
+                android:textColor="@color/material_green_700"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

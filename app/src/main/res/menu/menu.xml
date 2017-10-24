@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/invite_friends"
+        android:showAsAction="always"
+        android:title="@string/invite_friends" />
+    <item
+        android:id="@+id/login"
+        android:showAsAction="always"
+        android:title="@string/login" />
+    <item
+        android:id="@+id/cart"
+        android:showAsAction="always"
+        android:title="@string/cart" />
+
+    <item
+        android:id="@+id/notification"
+        android:showAsAction="always"
+        android:title="@string/notification" />
+    <item
+        android:id="@+id/register"
+        android:showAsAction="always"
+        android:title="@string/Register" />
+
+
+</menu>
