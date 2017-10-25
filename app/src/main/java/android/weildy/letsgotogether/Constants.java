@@ -7,4 +7,5 @@ public class Constants {
 
     public static String IS_LOGGED_IN="islogin";
     public static String APP_NAME="letsgotogether";
+    public static String BASE_URL="https://reqres.in/api/";
 }

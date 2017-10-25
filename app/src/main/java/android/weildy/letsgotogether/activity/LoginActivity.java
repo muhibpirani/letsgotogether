@@ -4,10 +4,17 @@ import android.content.Intent;
 import android.view.View;
 import android.weildy.letsgotogether.BaseActivity;
 import android.weildy.letsgotogether.R;
+import android.weildy.letsgotogether.http.FetchServiceBase;
+import android.weildy.letsgotogether.http.model.ListBean;
+import android.weildy.letsgotogether.http.model.request.LoginRequest;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG =LoginActivity.class.getSimpleName() ;
@@ -60,6 +67,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.txt_login:
+                callLoginApi();
                 Intent intent=new Intent(this,MainActivity.class);
                 startActivity(intent);
                 //signInWithGoogle();
@@ -69,6 +77,31 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 startActivity(intent1);
                 break;
         }
+    }
+
+    private void callLoginApi() {
+        LoginRequest loginRequest=new LoginRequest();
+        loginRequest.setEmail("peter@klaven");
+        loginRequest.setPassword("cityslicka");
+        FetchServiceBase.getFetcherService().login(loginRequest).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ListBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(ListBean listBean) {
+
+                    }
+                });
+
     }
 
     /*private void signInWithGoogle() {
