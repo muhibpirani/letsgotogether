@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Patterns;
+import android.widget.Toast;
 
 /**
  * Created by muhib on 10/25/2017.
@@ -21,6 +22,11 @@ public class Utils {
             return Patterns.EMAIL_ADDRESS.matcher(email).matches();
         else
             return false;
+    }
+
+    public static void showToast(Context context,String text)
+    {
+        Toast.makeText(context,text,Toast.LENGTH_LONG).show();
     }
 
 }

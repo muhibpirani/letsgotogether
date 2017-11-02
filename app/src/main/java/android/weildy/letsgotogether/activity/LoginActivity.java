@@ -1,12 +1,14 @@
 package android.weildy.letsgotogether.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.View;
 import android.weildy.letsgotogether.BaseActivity;
 import android.weildy.letsgotogether.R;
+import android.weildy.letsgotogether.Utils;
 import android.weildy.letsgotogether.http.FetchServiceBase;
 import android.weildy.letsgotogether.http.model.ListBean;
-import android.weildy.letsgotogether.http.model.request.LoginRequest;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -19,6 +21,8 @@ import rx.schedulers.Schedulers;
 public class LoginActivity extends BaseActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG =LoginActivity.class.getSimpleName() ;
     private TextView txt_login,txt_register;
+    private EditText edt_username,edt_password;
+    private ProgressDialog progressDialog;
   //  private TextView txt_signin;
     //private GoogleApiClient mGoogleApiClient;
     //private static final int RC_SIGN_IN = 007;
@@ -48,6 +52,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         txt_register=(TextView)findViewById(R.id.txt_register);
         txt_login.setOnClickListener(this);
         txt_register.setOnClickListener(this);
+        edt_username=(EditText)findViewById(R.id.edt_username);
+        edt_password=(EditText)findViewById(R.id.edt_password);
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setCancelable(false);
 
 
 
@@ -67,9 +75,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.txt_login:
+                if(edt_username.getText().toString().length()==10)
                 callLoginApi();
-                Intent intent=new Intent(this,MainActivity.class);
-                startActivity(intent);
+                else
+                Utils.showToast(this,"Please enter valid username");
                 //signInWithGoogle();
                 break;
             case R.id.txt_register:
@@ -80,10 +89,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     }
 
     private void callLoginApi() {
-        LoginRequest loginRequest=new LoginRequest();
-        loginRequest.setEmail("peter@klaven");
-        loginRequest.setPassword("cityslicka");
-        FetchServiceBase.getFetcherService().login(loginRequest).subscribeOn(Schedulers.newThread())
+        progressDialog.setMessage("Please Wait");
+        progressDialog.show();
+        FetchServiceBase.getFetcherService().login(edt_username.getText().toString(),edt_password.getText().toString()).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ListBean>() {
                     @Override
@@ -93,12 +101,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
                     @Override
                     public void onError(Throwable e) {
-
+                        progressDialog.dismiss();
                     }
 
                     @Override
                     public void onNext(ListBean listBean) {
-
+                        progressDialog.dismiss();
+                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                        startActivity(intent);
                     }
                 });
 
