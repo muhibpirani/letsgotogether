@@ -16,10 +16,6 @@
         <activity
             android:name=".activity.LoginActivity"/>
 
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="@string/googlemapsapi" />
-
         <activity android:name=".activity.CartActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.NotificationActivity" />
@@ -30,6 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ProductActivity"/>
+        <activity android:name=".activity.SalesActivity"/>
+        <activity android:name=".activity.OrderActivity"/>
+        <activity android:name=".activity.CategoryActivity"/>
     </application>
 
 </manifest>

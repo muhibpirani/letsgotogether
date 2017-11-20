@@ -20,7 +20,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.weildy.letsgotogether.activity.CartActivity;
-import android.weildy.letsgotogether.activity.LoginActivity;
 import android.weildy.letsgotogether.activity.NotificationActivity;
 import android.weildy.letsgotogether.activity.RegisterActivity;
 import android.widget.FrameLayout;
@@ -197,9 +196,8 @@ public abstract class BaseNavigationActivity extends AppCompatActivity implement
             public void run() {
                 switch (item.getItemId()) {
 
-                    case R.id.login:
-                        Intent intent = new Intent(context, LoginActivity.class);
-                        context.startActivity(intent);
+                    case R.id.logout:
+                        //clearAllPreferences();
                         break;
                     case R.id.cart:
                         Intent intent1 = new Intent(context, CartActivity.class);

@@ -15,7 +15,26 @@
     <string name="notification">Notification</string>
     <string name="login">login</string>
     <string name="area">Area</string>
-    <string name="Register">Register</string>
+    <string name="Register">Register new User</string>
     <string name="dont_have_account">Don\'t have an account?</string>
     <string name="username">Username</string>
+    <string name="city">City</string>
+    <string name="phone_number">Phone number</string>
+    <string name="number">Mobile No.</string>
+    <string name="pincode">Pin code</string>
+    <string name="addedby">Added By</string>
+    <string name="utype">User Type</string>
+    <string name="product_master">Product Master</string>
+    <string name="sales_master">Sales Master</string>
+    <string name="order_master">Order Master</string>
+    <string name="customer_master">Customer Master</string>
+    <string name="product_name">Product Name</string>
+    <string name="category">Category</string>
+    <string name="price1">Price 1</string>
+    <string name="price2">Price 2</string>
+    <string name="price3">Price 3</string>
+    <string name="price4">Price 4</string>
+    <string name="price5">Price 5</string>
+    <string name="category_master">Category Master</string>
+    <string name="category_name">Category Name</string>
 </resources>

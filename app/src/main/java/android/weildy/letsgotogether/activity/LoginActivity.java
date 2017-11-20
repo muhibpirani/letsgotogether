@@ -3,11 +3,12 @@ package android.weildy.letsgotogether.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.View;
+import android.weildy.letsgotogether.AppPreference;
 import android.weildy.letsgotogether.BaseActivity;
 import android.weildy.letsgotogether.R;
 import android.weildy.letsgotogether.Utils;
 import android.weildy.letsgotogether.http.FetchServiceBase;
-import android.weildy.letsgotogether.http.model.ListBean;
+import android.weildy.letsgotogether.http.model.LoginResoponse;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,9 +21,10 @@ import rx.schedulers.Schedulers;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG =LoginActivity.class.getSimpleName() ;
-    private TextView txt_login,txt_register;
+    private TextView txt_login;
     private EditText edt_username,edt_password;
     private ProgressDialog progressDialog;
+    private AppPreference appPreference;
   //  private TextView txt_signin;
     //private GoogleApiClient mGoogleApiClient;
     //private static final int RC_SIGN_IN = 007;
@@ -49,13 +51,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         mAuth = FirebaseAuth.getInstance();*/
         txt_login=(TextView)findViewById(R.id.txt_login);
-        txt_register=(TextView)findViewById(R.id.txt_register);
         txt_login.setOnClickListener(this);
-        txt_register.setOnClickListener(this);
         edt_username=(EditText)findViewById(R.id.edt_username);
         edt_password=(EditText)findViewById(R.id.edt_password);
         progressDialog=new ProgressDialog(this);
         progressDialog.setCancelable(false);
+        appPreference=AppPreference.getInstance(this);
 
 
 
@@ -72,18 +73,27 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     }
 
     @Override
+    public void onToolBarAddClick() {
+
+    }
+
+    @Override
+    protected boolean showAddButton() {
+        return false;
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.txt_login:
                 if(edt_username.getText().toString().length()==10)
+                    if(edt_password.getText().toString().length()>=4)
                 callLoginApi();
+                    else
+                        Utils.showToast(this,"Password must me atleast 4 characters");
                 else
                 Utils.showToast(this,"Please enter valid username");
                 //signInWithGoogle();
-                break;
-            case R.id.txt_register:
-                Intent intent1=new Intent(this,RegisterActivity.class);
-                startActivity(intent1);
                 break;
         }
     }
@@ -93,7 +103,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         progressDialog.show();
         FetchServiceBase.getFetcherService().login(edt_username.getText().toString(),edt_password.getText().toString()).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ListBean>() {
+                .subscribe(new Subscriber<LoginResoponse>() {
                     @Override
                     public void onCompleted() {
 
@@ -105,10 +115,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     }
 
                     @Override
-                    public void onNext(ListBean listBean) {
+                    public void onNext(LoginResoponse listBean) {
                         progressDialog.dismiss();
-                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                        startActivity(intent);
+                        appPreference.setUserType(listBean.getUtype());
+                        if(listBean.getStatus()) {
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            Utils.showToast(LoginActivity.this,"Please enter correct username/password");
+                        }
                     }
                 });
 

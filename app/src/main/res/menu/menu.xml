@@ -6,10 +6,6 @@
         android:showAsAction="always"
         android:title="@string/invite_friends" />
     <item
-        android:id="@+id/login"
-        android:showAsAction="always"
-        android:title="@string/login" />
-    <item
         android:id="@+id/cart"
         android:showAsAction="always"
         android:title="@string/cart" />
@@ -22,6 +18,10 @@
         android:id="@+id/register"
         android:showAsAction="always"
         android:title="@string/Register" />
+    <item
+        android:id="@+id/logout"
+        android:showAsAction="always"
+        android:title="@string/logout" />
 
 
 </menu>
