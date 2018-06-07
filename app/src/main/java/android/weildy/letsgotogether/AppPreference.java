@@ -34,4 +34,17 @@ public class AppPreference {
     private boolean getIsLogin() {
         return mPref.getBoolean(Constants.IS_LOGGED_IN, false);
     }
+
+
+    //USERTYPE
+    public void setUserType(String type)
+    {
+        mEditor.putString(Constants.USERTYPE, type);
+    }
+
+    public String getUserType()
+    {
+        return mPref.getString(Constants.USERTYPE, "");
+    }
+
 }

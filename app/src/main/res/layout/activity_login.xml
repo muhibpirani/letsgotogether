@@ -14,9 +14,11 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/edt_username"
                 android:layout_width="match_parent"
+                android:inputType="number"
                 android:layout_height="wrap_content"
-                android:hint="@string/email" />
+                android:hint="@string/username" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -24,6 +26,8 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/edt_password"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password" />
@@ -52,7 +56,7 @@
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="@android:color/white" />
 
-        <TextView
+        <!--<TextView
             android:text="@string/dont_have_account"
             android:gravity="center"
             android:textAppearance="?android:textAppearanceMedium"
@@ -71,7 +75,7 @@
             android:padding="7dp"
             android:text="@string/Register"
             android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white" />-->
 
     </LinearLayout>
 

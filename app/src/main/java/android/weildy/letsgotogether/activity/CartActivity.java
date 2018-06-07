@@ -47,4 +47,14 @@ public class CartActivity extends BaseActivity {
     public boolean showBackButton() {
         return true;
     }
+
+    @Override
+    public void onToolBarAddClick() {
+
+    }
+
+    @Override
+    protected boolean showAddButton() {
+        return false;
+    }
 }
